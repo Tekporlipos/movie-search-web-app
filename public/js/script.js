@@ -108,3 +108,43 @@ function showLoader() {
 function hideLoader() {
   loader.style.display = 'none';
 }
+
+// Array of random movie titles
+const initialMovieTitles = [
+    'The Matrix',
+    'Inception',
+    'The Dark Knight',
+    'Interstellar',
+    'Pulp Fiction',
+    'Fight Club',
+    'The Shawshank Redemption',
+    'Goodfellas',
+    'The Godfather',
+    'Forrest',
+    "Batman",
+    "Ironman",
+    "spiderman",
+  ];
+  
+  // Function to generate a random movie title
+  function getRandomMovieTitle() {
+    const randomIndex = Math.floor(Math.random() * initialMovieTitles.length);
+    return initialMovieTitles[randomIndex];
+  }
+  
+  // Function to load initial movies on page load
+  function loadInitialMovies() {
+    const initialQuery = getRandomMovieTitle();
+    searchInput.value = initialQuery;
+    fetchMovies(initialQuery)
+      .then((movies) => {
+        displayResults(movies);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  
+  // Execute the loadInitialMovies function when the page has finished loading
+  window.addEventListener('load', loadInitialMovies);
+  

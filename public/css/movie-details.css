@@ -40,11 +40,7 @@
     font-weight: bold;
   }
   
-  @media (max-width: 768px) {
-    #movie-details-container {
-      grid-template-columns: 1fr; /* Change to a single column layout for smaller screens */
-    }
-  }
+
   .swiper-container {
     width: 100%;
   }
@@ -58,12 +54,7 @@
     color: #fff;
     font-size: 1.5rem;
   }
-  
-  @media (max-width: 768px) {
-    .swiper-slide {
-      width: 160px; /* Adjust the width as needed for smaller screens */
-    }
-  }
+
   .related-movies-container {
     margin-top: 20px;
     margin-bottom: 40px;
@@ -100,4 +91,12 @@
   .movie-card h3{
     width: 220px;
     overflow-x: hidden;
+  }
+    @media (max-width: 768px) {
+    #movie-details-container {
+      grid-template-columns: 1fr; /* Change to a single column layout for smaller screens */
+    }
+      .movie-details-wrapper{
+          flex-direction: column;
+      }
   }

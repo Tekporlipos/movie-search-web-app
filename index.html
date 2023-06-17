@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Movie Search App">
+  <meta name="keywords" content="movies, search, app">
+  <meta name="author" content="John Dzikunu">
+  <link rel="icon" type="image/png" href="/public/assets/logo.png">
   <title>Movie Search App</title>
+  
   <link rel="stylesheet" type="text/css" href="./public/css/style.css">
   <link rel="stylesheet" type="text/css" href="./public/css/animation.css">
 </head>
-<body>
+<body class="container">
   <header>
     <h1>Movie Search</h1>
     <form id="search-form">
-      <input type="text" id="search-input" placeholder="Enter movie title">
+      <input type="text" minlength="2" id="search-input" placeholder="Enter movie title">
       <button type="submit">Search</button>
     </form>
   </header>
 
-  <div id="results" class="container"></div>
+  <div id="results"></div>
   <div id="loader" class="d-center"> <img src="/public/assets/throbber.gif" alt="">  </div>
   
   <script src="/public/js/config.js"></script>
