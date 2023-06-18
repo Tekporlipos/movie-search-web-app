@@ -2,20 +2,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const imdbID = urlParams.get('imdbID');
 
-// Function to fetch movie details from the API
-async function fetchMovieDetails(imdbID) {
-  const url = `${API_URL}&i=${imdbID}`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error:', error);
-    return null;
-  }
-}
-
 // Function to display movie details
 function displayMovieDetails(movie) {
     const movieDetailsContainer = document.getElementById('movie-details-container');
@@ -28,7 +14,7 @@ function displayMovieDetails(movie) {
     imageWrapper.classList.add('image-wrapper');
   
     const poster = document.createElement('img');
-    poster.src = movie.Poster !== 'N/A' ? movie.Poster : 'no-poster.jpg';
+    poster.src = movie.Poster !== 'N/A' ? movie.Poster : 'https://picsum.photos/seed/picsum/200/300';
     poster.alt = movie.Title;
     imageWrapper.appendChild(poster);
   
@@ -75,18 +61,7 @@ function displayMovieDetails(movie) {
       });
   }
   
-  // Function to fetch related movies from the API
-  async function fetchRelatedMovies(title) {
-    const url = `${API_URL}&s=${encodeURIComponent(title)}`;
-  
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.Search;
-    } catch (error) {
-      throw new Error('Failed to fetch related movies');
-    }
-  }
+
   
 // Function to display related movies using Glide carousel
 function displayRelatedMovies(movies) {
@@ -142,33 +117,6 @@ function displayRelatedMovies(movies) {
   
     glide.mount();
   }
-  
-  
-  // Function to create a movie card element
-  function createMovieCard(movie) {
-    const movieCard = document.createElement('div');
-    movieCard.classList.add('movie-card');
-  
-    const img = document.createElement('img');
-    img.src = movie.Poster !== 'N/A' ? movie.Poster : 'no-poster.jpg';
-    movieCard.appendChild(img);
-  
-    const title = document.createElement('h3');
-    title.textContent = movie.Title;
-    movieCard.appendChild(title);
-  
-    const year = document.createElement('span');
-    year.textContent = movie.Year;
-    movieCard.appendChild(year);
-  
-    movieCard.addEventListener('click', () => {
-      const imdbID = movie.imdbID;
-      window.location.href = `movie-details.html?imdbID=${imdbID}`;
-    });
-  
-    return movieCard;
-  }
-  
   // Fetch and display the movie details
   fetchMovieDetails(imdbID)
     .then((movie) => {
