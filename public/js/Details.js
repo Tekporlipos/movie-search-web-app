@@ -61,7 +61,30 @@ function displayMovieDetails(movie) {
       });
   }
   
+ // Function to create a movie card element
+ function createMovieCard(movie) {
+  const movieCard = document.createElement('div');
+  movieCard.classList.add('movie-card');
 
+  const img = document.createElement('img');
+  img.src = movie.Poster !== 'N/A' ? movie.Poster : 'no-poster.jpg';
+  movieCard.appendChild(img);
+
+  const title = document.createElement('h3');
+  title.textContent = movie.Title;
+  movieCard.appendChild(title);
+
+  const year = document.createElement('span');
+  year.textContent = movie.Year;
+  movieCard.appendChild(year);
+
+  movieCard.addEventListener('click', () => {
+    const imdbID = movie.imdbID;
+    window.location.href = `movie-details.html?imdbID=${imdbID}`;
+  });
+
+  return movieCard;
+}
   
 // Function to display related movies using Glide carousel
 function displayRelatedMovies(movies) {
