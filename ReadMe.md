@@ -32,13 +32,28 @@ The Movie Search App is a web application that allows users to search for movies
 
 ## Screenshots
 
-### Home Page
-![Home Page Screenshot](/public/assets/Screenshot%202023-06-17%20at%2018-22-20%20Movie%20Search%20App.png)
+### (Desktop)
+### Home Page (Desktop)
+![Home Page Screenshot](./public/assets/desktop%20load.png)
 
-![Home Page Screenshot](/public/assets/Screenshot%202023-06-17%20at%2018-22-44%20Movie%20Search%20App.png)
+![Home Page Screenshot](./public/assets/desktop%20auto%20load.png)
 ### Movie Details Page
-![Movie Details Page Screenshot](/public/assets/Screenshot%202023-06-17%20at%2018-23-28%20Movie%20Details.png)
+![Movie Details Page Screenshot](./public/assets/desktop%20more%20details.png)
 
+### (Tablet)
+### Home Page 
+![Home Page Screenshot](./public/assets/tablet%20load.png)
+
+![Home Page Screenshot](./public/assets/tablet%20auto%20load.png)
+### Movie Details Page
+![Movie Details Page Screenshot](./public/assets/tablet%20more%20details.png)
+
+### (Mobile)
+### Home Page 
+![Home Page Screenshot](./public/assets/mobile%20auto%20load.png)
+
+### Movie Details Page
+![Movie Details Page Screenshot](./public/assets/mobile%20more%20details.png)
 
 ## Live Demo
 
