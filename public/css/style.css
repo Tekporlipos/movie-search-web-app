@@ -25,7 +25,7 @@ body {
   input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    width: 300px;
+    width: 30%;
     background-color: rgba(255, 255, 255, 0.3);
     color: #fff;
     border: none;
@@ -142,4 +142,10 @@ body {
   a{
     text-decoration: none;
     color: white;
+  }
+
+  @media (max-width: 768px) {
+    input[type="text"] {
+      width:50%;
+    }
   }
