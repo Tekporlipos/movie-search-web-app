@@ -13,12 +13,10 @@ const loader = document.getElementById('loader');
 // Event listener for search form submission
 searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-
   const query = searchInput.value.trim();
   if (query === '') {
     return;
   }
-
   resultsContainer.innerHTML = ''; // Clear previous results
   showLoader();
   const movies = await fetchMovies(query);
@@ -78,6 +76,7 @@ const initialMovieTitles = [
     searchInput.value = initialQuery;
     fetchMovies(initialQuery)
       .then((movies) => {
+        console.log(movies);
         displayResults(movies);
       })
       .catch((error) => {
@@ -88,3 +87,60 @@ const initialMovieTitles = [
   // Execute the loadInitialMovies function when the page has finished loading
   window.addEventListener('load', loadInitialMovies);
   
+// Event listener for sorting by option change
+const sortBySelect = document.getElementById('sort-by');
+sortBySelect.addEventListener('change', () => {
+  const selectedSortBy = sortBySelect.value;
+  const query = searchInput.value;
+  fetchMovies(query, 1, selectedSortBy)
+    .then((movies) => {
+      resultsContainer.innerHTML = ''; // Clear previous results
+let newData = movies;
+      switch (sortBySelect.value) {
+        case "relevance":
+          newData =   movies.sort((v,a)=>a.Poster.length - v.Poster.length);
+          break;
+          case "title":
+            newData =   movies.sort((v,a)=>a.Title.length - v.Title.length);
+          break;
+          case "year":
+            newData =   movies.sort((v,a)=>Number(a.Year) - Number(v.Year));
+          break;
+        default:
+          break;
+      }
+      displayResults(newData);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+});
+
+// Event listener for filtering by type option change
+const sortByType = document.getElementById('filter-type');
+sortByType.addEventListener('change', () => {
+  const selectedSortBy = sortByType.value;
+  const query = searchInput.value;
+  fetchMovies(query, 1, sortBySelect.value, selectedSortBy)
+    .then((movies) => {
+      resultsContainer.innerHTML = ''; // Clear previous results
+      displayResults(movies);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+});
+
+// Event listener for filter button click
+const filterButton = document.getElementById('filter-button');
+const filterBar = document.querySelector('.filter-bar');
+filterButton.addEventListener('click', () => {
+  let display = filterBar.style.display;
+  if (display === 'none') {
+    filterBar.style.display = 'flex';
+  } else {
+    filterBar.style.display = 'none';
+    sortBySelect.value = 'relevance';
+    sortByType.value = 'movie';
+  }
+});
