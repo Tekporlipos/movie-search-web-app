@@ -67,7 +67,7 @@ function displayMovieDetails(movie) {
   movieCard.classList.add('movie-card');
 
   const img = document.createElement('img');
-  img.src = movie.Poster !== 'N/A' ? movie.Poster : 'no-poster.jpg';
+  img.src = movie.Poster !== 'N/A' ? movie.Poster : 'https://picsum.photos/200/300?grayscale';
   movieCard.appendChild(img);
 
   const title = document.createElement('h3');

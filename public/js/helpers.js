@@ -25,19 +25,19 @@ function createMovieCard(movie) {
     return movieCard;
   }
 
-  // Function to fetch movie data from the API
-async function fetchMovies(query, page = 1) {
-    const url = `${API_URL}&s=${encodeURIComponent(query)}&page=${page}`;
-  
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.Search;
-    } catch (error) {
-      console.error('Error:', error);
-      return [];
-    }
+// Function to fetch movie data from the API
+async function fetchMovies(query, page = 1, sortBy = 'relevance', type = 'movie') {
+  let url = `${API_URL}&s=${encodeURIComponent(query)}&page=${page}&type=${type}&sort=${sortBy}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.Search;
+  } catch (error) {
+    console.error('Error:', error);
+    return [];
   }
+}
+
 
     // Function to fetch related movies from the API
     async function fetchRelatedMovies(title) {
@@ -67,8 +67,8 @@ async function fetchMovieDetails(imdbID) {
   }
 
   // Function to display movie results
-function displayResults(movies) {
-    if (movies.length === 0) {
+function displayResults(movies=[]) {
+    if (movies.length == 0) {
       const message = document.createElement('p');
       message.textContent = 'No results found.';
       resultsContainer.appendChild(message);
